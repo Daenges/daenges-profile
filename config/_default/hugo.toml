@@ -1,0 +1,4 @@
+baseURL = 'http://daeng.es/'
+languageCode = 'en-us'
+title = 'DaengOS'
+theme = "windytheme"

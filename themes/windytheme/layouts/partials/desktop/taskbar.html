@@ -1,0 +1,9 @@
+<div id="taskbar" class="w-full h-11 bg-[#c0c0c0] absolute inset-x-0 bottom-0 border-t-2 border-slate-200 flex items-center">
+    <div class="absolute left-0 ml-1 w-fit">
+        {{- partial "desktop/menubutton.html" (dict "context" . "text" "[Img] Start") -}}
+    </div>
+                
+    <div class="absolute right-0 mr-1 w-fit">
+        {{- partial "desktop/clock.html" -}}
+    </div>     
+</div>
