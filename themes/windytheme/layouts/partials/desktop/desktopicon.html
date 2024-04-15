@@ -1,4 +1,21 @@
-<div class="text-center w-20 text-slate-200 select-all">
+<div onclick="createWindow()" class="text-center w-20 text-slate-200 select-all">
     <img class="md:h-16 md:w-16 m-auto" src="{{ .baseName }}/desk_icon.webp" alt="AltText">
     {{ .baseName | strings.FirstUpper }}
 </div>
+
+<script>
+    function createWindow() {
+        fetch('/html/desktop/windowtemplate.html')
+        .then(response => response.text())
+        .then(html => {
+            var modifiedHTML = html
+                                .replace("##window-id##", "{{ .baseName }}")
+                                .replace("##window-title##", "{{ .baseName | strings.FirstUpper }}")
+                                .replace("##iframe-src##", "/{{ .baseName }}/");
+
+            document.getElementById('iconlist').insertAdjacentHTML('beforeend', modifiedHTML);
+        })
+        .catch(error => console.error('Error fetching HTML:', error));
+
+    }
+</script>
