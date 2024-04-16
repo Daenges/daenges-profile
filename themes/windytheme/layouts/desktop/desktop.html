@@ -2,8 +2,9 @@
 <html>
     {{- partial "head.html" . -}}
     <body class="bg-[#008080] w-screen h-screen">
-        {{- partial "desktop/windowplane.html" (dict "context" . "height" "z-10") -}}
+        {{/*  {{- partial "desktop/windowplane.html" (dict "context" . "height" "z-10") -}}  */}}
         {{- partial "desktop/iconlist.html" (dict "context" . "height" "z-0") -}}
         {{- partial "desktop/taskbar.html" (dict "context" . "height" "z-20") -}}
     </body>
+    {{- partial "desktop/windowhandler.html" . -}}
 </html>
