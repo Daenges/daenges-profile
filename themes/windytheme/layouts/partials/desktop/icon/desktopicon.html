@@ -1,6 +1,7 @@
 {{ $windowTitle := .baseName | strings.FirstUpper }}
 {{ $basePath := printf "/%s/" .baseName }}
-<div onclick="addContentToScreen({{- partial "partialtoinline.html" (dict "context" . "path" "desktop/windowtemplate.html" "args" (dict "title" $windowTitle "content" "b")) -}})"
+{{ $windowHtml := partial "partialtoinline.html" (dict "context" . "path" "desktop/window/windowtemplate.html" "args" (dict "title" $windowTitle "content" "b")) }}
+<div onclick="addContentToScreen({{ $windowHtml }})"
 class="text-center w-20 text-slate-200 select-all">
     <img class="md:h-16 md:w-16 m-auto" src="{{ .baseName }}/desk_icon.webp" alt="AltText">
     {{ $windowTitle }}

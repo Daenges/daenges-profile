@@ -2,6 +2,6 @@
     {{ range .context.Site.RegularPages }}
         {{ $splitResult := split .RelPermalink "/" }}
         {{ $baseName := index $splitResult 1 }}
-        {{ partial "desktop/desktopicon.html" ( dict "context" . "baseName" $baseName) }}
+        {{ partial "desktop/icon/desktopicon.html" ( dict "context" . "baseName" $baseName) }}
     {{ end }}
 </div>
