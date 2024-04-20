@@ -10,6 +10,10 @@
             windowList.push(fullId);
             wp.innerHTML += content;
             
+            var windowhtml = document.getElementById(fullId);
+            windowhtml.style.top = `${(window.innerHeight - windowhtml.offsetHeight) / 2}px`;
+            windowhtml.style.left = `${(window.innerWidth - windowhtml.offsetWidth) / 2}px`;
+
             windowList.forEach(windowID => {
                 makeElementDraggable(document.getElementById(windowID));
             });
@@ -18,13 +22,13 @@
 
     function makeElementDraggable(elmnt) {
         var dragPosStart = { X: 0, Y: 0 };
+
         document.getElementById(elmnt.id + "-header").addEventListener("mousedown", dragMouseDown);
         elmnt.style.zIndex = currentZlvl++;
 
         function dragMouseDown(e) {
             e = e || window.event;
             e.preventDefault();
-            console.log(currentZlvl, elmnt.style.zIndex)
             if(currentZlvl-1 != elmnt.style.zIndex)
                 elmnt.style.zIndex = currentZlvl++;
             
@@ -46,6 +50,14 @@
         function closeDragElement() {
             document.removeEventListener("mouseup", closeDragElement);
             document.removeEventListener("mousemove", elementDrag);
+        }
+    }
+
+    function removeWindow(id) {
+        const index = windowList.indexOf(id);
+        if(index > -1) {
+            windowList.splice(index, 1);
+            document.getElementById(id).remove();
         }
     }
 </script>
