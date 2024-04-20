@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     {{- partial "head.html" . -}}
-    <body class="bg-[#008080] w-screen h-screen">
+    <body id="desktop" class="bg-[#008080] w-screen h-screen overflow-hidden relative">
         {{/*  {{- partial "desktop/windowplane.html" (dict "context" . "height" "z-10") -}}  */}}
-        {{- partial "desktop/icon/iconlist.html" (dict "context" . "height" "z-0") -}}
-        {{- partial "desktop/taskbar/taskbar.html" (dict "context" . "height" "z-20") -}}
+        {{- partial "desktop/icon/iconlist.html" . -}}
+        {{- partial "desktop/taskbar/taskbar.html" . -}}
     </body>
     {{- partial "desktop/window/windowhandler.html" . -}}
 </html>
