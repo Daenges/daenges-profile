@@ -11,8 +11,8 @@
             wp.innerHTML += content;
             
             var windowhtml = document.getElementById(fullId);
-            windowhtml.style.top = `${(window.innerHeight - windowhtml.offsetHeight) / 2}px`;
-            windowhtml.style.left = `${(window.innerWidth - windowhtml.offsetWidth) / 2}px`;
+            windowhtml.style.top = `${Math.max((window.innerHeight - windowhtml.offsetHeight) / 2, 0)}px`;
+            windowhtml.style.left = `${Math.max((window.innerWidth - windowhtml.offsetWidth) / 2, 0)}px`;
 
             windowList.forEach(windowID => {
                 makeElementDraggable(document.getElementById(windowID));

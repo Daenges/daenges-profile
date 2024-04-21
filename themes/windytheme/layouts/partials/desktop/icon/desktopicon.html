@@ -2,7 +2,7 @@
 {{ $basePath := printf "/%s/" .baseName }}
 {{ $windowHtml := partial "partialtoinline.html" (dict "context" . "path" "desktop/window/windowtemplate.html" "args" (dict "title" $windowTitle "src" $basePath)) }}
 <div onclick="addContentToScreen({{ $windowHtml }}, {{ $windowTitle }})"
-class="text-center w-20 text-slate-200 select-all">
+class="text-center w-20 text-slate-200 select-all cursor-pointer">
     <img class="md:h-16 md:w-16 m-auto" src="{{ .baseName }}/desk_icon.webp" alt="AltText">
     {{ $windowTitle }}
 </div>

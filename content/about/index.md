@@ -1,0 +1,4 @@
+---
+layout: 'profile'
+type: 'profile'
+---

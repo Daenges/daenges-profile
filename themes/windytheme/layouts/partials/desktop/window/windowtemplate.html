@@ -1,14 +1,14 @@
 {{ $windowId := printf "%s-window" .title }}
 <div id="{{ $windowId }}" 
-    class="w-2/3 h-3/4 bg-[#c0c0c0] border-2 border-l-slate-200 border-t-slate-200 border-r-black border-b-black p-1 flex flex-col absolute m-auto">
-    <div id="{{ $windowId }}-header" class="w-full h-6 pl-1 bg-[#000080] text-white font-bold">
+    class="w-2/3 h-3/4 min-w-[1000px] min-h-[550px] bg-[#c0c0c0] border-2 border-l-slate-200 border-t-slate-200 border-r-black border-b-black p-1 flex flex-col absolute m-auto">
+    <div id="{{ $windowId }}-header" class="w-full h-6 pl-1 bg-[#000080] text-white font-bold cursor-pointer">
         <span class="select-none">{{ .title }}</span>
     </div>
     <div class="grid grid-flow-col gap-0 text-black font-bold w-13 h-6 absolute right-1 pr-1 justify-items-end">
-        <button class="bg-[#c0c0c0] text-xs w-6 h-5 my-auto active:bg-gray-600 border-2 border-t-slate-200 border-l-white border-r-black border-b-black"
+        <button class="bg-[#c0c0c0] text-xs cursor-pointer w-6 h-5 my-auto active:bg-gray-600 border-2 border-t-slate-200 border-l-white border-r-black border-b-black"
         onclick="window.open({{ .src }})"
-        >⛶</button>
-        <button class="bg-[#c0c0c0] text-xs w-6 h-5 my-auto active:bg-gray-600 border-2 border-t-slate-200 border-l-white border-r-black border-b-black"
+        >&#9974;</button>
+        <button class="bg-[#c0c0c0] text-xs cursor-pointer w-6 h-5 my-auto active:bg-gray-600 border-2 border-t-slate-200 border-l-white border-r-black border-b-black"
         onclick="removeWindow({{ $windowId }})"
         >X</button>
     </div>
