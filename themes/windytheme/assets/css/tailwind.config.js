@@ -7,11 +7,11 @@ module.exports = {
       keyframes: {
         scrollBackgroundDown : {
           '0%' : { backgroundPosition: '0 0'},
-          '100%': { backgroundPosition: '1000% 1000%'}
+          '100%': { backgroundPosition: '200vw 200vh'}
         }
       },
       animation: {
-        scrollBackgroundDown : 'scrollBackgroundDown 3000s linear infinite'
+        scrollBackgroundDown : 'scrollBackgroundDown 240s linear infinite'
       }
     }
   },

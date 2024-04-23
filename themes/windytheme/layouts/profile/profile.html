@@ -1,3 +1,15 @@
+{{ $smLeft := slice 
+    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" ) 
+    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
+    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
+}}
+
+{{ $smRight := slice 
+    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" ) 
+    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
+    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
+}}
+
 <!DOCTYPE html>
 <html>
     {{- partial "head.html" . -}}
@@ -9,8 +21,24 @@
                     <div class="w-full text-center text-white font-bold text-3xl select-all">Daenges</div>
                 </div>
             </div>
-            <div class="w-full h-1/6 pt-4 bg-slate-800 border-t-2 border-t-zinc-700">
-                <img src="/img/profile/arrow-up.webp" alt="" class="m-auto animate-pulse">
+            <div class="w-full h-1/6 pt-4 bg-slate-800 border-t-2 border-t-zinc-700 flex">
+                <div class="w-full h-fit absolute">
+                    <img src="/img/profile/arrow-up.webp" alt="" class="m-auto animate-pulse">
+                </div>
+                <div id="socials-left" class="h-full w-1/2 pl-10 pr-10">
+                    <div class="grid grid-flow-col h-full">
+                        {{ range $smLeft }}
+                            {{ partial "profile/sociallink.html" (dict "link" .link "img" .img) }}
+                        {{ end }}
+                    </div>
+                </div>
+                <div id="socials-right" class="h-full w-1/2 pl-10 pr-10">
+                    <div class="grid grid-flow-col h-full">
+                        {{ range $smRight }}
+                            {{ partial "profile/sociallink.html" (dict "link" .link "img" .img) }}
+                        {{ end }}
+                    </div>
+                </div>
             </div>
         </div>
         <div class="w-full h-fit mx-auto bg-slate-800 bg-hero-circuit-board animate-scrollBackgroundDown">
