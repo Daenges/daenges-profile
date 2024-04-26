@@ -1,13 +1,11 @@
 {{ $smLeft := slice 
     (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" ) 
-    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
-    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
+    (dict "link" "https://linkedin.com" "img" "/img/profile/linkedin-mark-white.webp" ) 
 }}
 
 {{ $smRight := slice 
-    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" ) 
-    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
-    (dict "link" "https://github.com/daenges" "img" "/img/profile/github-mark-white.webp" )
+    (dict "link" "mailto:daenges2@gmail.com" "img" "/img/profile/mail-mark-white.webp" ) 
+    (dict "link" "https://www.youtube.com/@daenges" "img" "/img/profile/youtube-mark-white.webp" )
 }}
 
 <!DOCTYPE html>
@@ -21,18 +19,18 @@
                     <div class="w-full text-center text-white font-bold text-3xl select-all">Daenges</div>
                 </div>
             </div>
-            <div class="w-full h-1/6 pt-4 bg-slate-800 border-t-2 border-t-zinc-700 flex">
-                <div class="w-full h-fit absolute">
+            <div class="w-full h-1/6 pt-4 bg-slate-800 border-t-2 border-zinc-700 flex">
+                <div class="w-full h-fit absolute z-0">
                     <img src="/img/profile/arrow-up.webp" alt="" class="m-auto animate-pulse">
                 </div>
-                <div id="socials-left" class="h-full w-1/2 pl-10 pr-10">
+                <div id="socials-left" class="h-full w-1/2 pl-10 pr-10 z-10">
                     <div class="grid grid-flow-col h-full">
                         {{ range $smLeft }}
                             {{ partial "profile/sociallink.html" (dict "link" .link "img" .img) }}
                         {{ end }}
                     </div>
                 </div>
-                <div id="socials-right" class="h-full w-1/2 pl-10 pr-10">
+                <div id="socials-right" class="h-full w-1/2 pl-10 pr-10 z-10">
                     <div class="grid grid-flow-col h-full">
                         {{ range $smRight }}
                             {{ partial "profile/sociallink.html" (dict "link" .link "img" .img) }}
@@ -44,7 +42,7 @@
         <div class="w-full h-fit mx-auto bg-slate-800 bg-hero-circuit-board animate-scrollBackgroundDown">
             <div class="w-full h-full backdrop-blur-[3px]">
                 <div id="gradient-top" class="h-16 w-full bg-gradient-to-b from-slate-800"></div>
-                <div class="rounded-lg m-3 p-4 bg-zinc-800">
+                <div class="rounded-lg m-3 p-4 bg-zinc-800 border-2 border-zinc-700">
                     <div id="content" class="prose prose-invert ml-16">
                         {{ .Content }}
                     </div>
