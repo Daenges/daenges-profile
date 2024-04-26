@@ -1,5 +1,6 @@
 const clockDiv = document.getElementById("clock");
-    
+
+// Sets the clock to the current time wiht AM/PM parsing
 function updateTime() {
     let currentTime = new Date();
     let hours = currentTime.getHours();
@@ -12,6 +13,7 @@ function updateTime() {
     clockDiv.innerText = `${hours}:${minutes} ${postfix}`
 }    
 
+// Triggers a clock refresh every 10 seconds
 document.onreadystatechange = () => {
     if(document.readyState == "complete") {
         updateTime();
