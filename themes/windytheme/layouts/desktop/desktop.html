@@ -2,7 +2,8 @@
 <html>
     <head>
         {{- partial "head.html" . -}}
-        {{- partial "desktop/window/windowhandler.html" . -}}
+        {{- partial "jsassetinclude.html" (dict "context" . "path" "js/desktop/clockhandler.js") -}}
+        {{- partial "jsassetinclude.html" (dict "context" . "path" "js/desktop/windowhandler.js") -}}
     </head>
 
     <body id="desktop" class="bg-[#008080] w-screen h-screen overflow-hidden relative">

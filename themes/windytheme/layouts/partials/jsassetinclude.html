@@ -1,6 +1,6 @@
-{{ $js := resources.Get "js/windowhandler.js" }}
+{{ $js := resources.Get .path }}
 
-{{ if .Site.IsServer }}
+{{ if .context.Site.IsServer }}
     <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
 {{ else }}
     {{ $js := $js | resources.Minify | resources.Fingerprint }}
