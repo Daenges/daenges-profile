@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+
+    <body class="w-screen h-screen bg-white flex bg-hero-graph-paper">
+        <div id="text" class="prose prose-lg w-screen font-mono m-auto select-none">
+            {{ .Content }}
+        </div>
+    </body>
+</html>

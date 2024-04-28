@@ -27,18 +27,23 @@ function makeElementDraggable(elmnt) {
     var dragPosStart = { X: 0, Y: 0 };
 
     document.getElementById(elmnt.id + "-header").addEventListener("mousedown", dragMouseDown);
+    elmnt.addEventListener("mousedown", raiseElement)
     elmnt.style.zIndex = currentZlvl++;
 
     // Start tracking mouse movement if click is hold on the header
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
-        if(currentZlvl-1 != elmnt.style.zIndex)
-            elmnt.style.zIndex = currentZlvl++;
+        raiseElement();
         
         dragPosStart = { X: e.clientX, Y: e.clientY };
         document.addEventListener("mouseup", closeDragElement);
         document.addEventListener("mousemove", elementDrag);
+    }
+
+    function raiseElement() {
+        if(currentZlvl-1 != elmnt.style.zIndex)
+            elmnt.style.zIndex = currentZlvl++;
     }
 
     // Track the mouse position, calculate the offset and move the window relative to it

@@ -11,12 +11,4 @@ function updateTime() {
     minutes = minutes < 10 ? "0" + minutes : minutes;
 
     clockDiv.innerText = `${hours}:${minutes} ${postfix}`
-}    
-
-// Triggers a clock refresh every 10 seconds
-document.onreadystatechange = () => {
-    if(document.readyState == "complete") {
-        updateTime();
-        setInterval(updateTime, 10000);
-    }
-};
+}
