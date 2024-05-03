@@ -1,3 +1,17 @@
 {{ define "main" }}
-    list template
+    <div class="w-screen h-screen overflow-x-hidden bg-[url('/img/profile/background.webp')] bg-cover bg-no-repeat">
+        <div class="w-full h-full p-4 flex bg-slate-800/55">
+            <div id="sections" class="w-3/4 m-auto">
+                {{ range where .Site.RegularPages "Type" .Section }}
+                    <a href="{{ .RelPermalink }}" class="block w-full mb-4 rounded-md backdrop-blur-lg bg-white/20 m-auto p-2 border-2 border-gray-500/70 duration-200 hover:border-white hover:bg-white/25">
+                        <div class="h-fulltext-ellipsis text-white overflow-hidden">
+                            <div class="font-bold text-2xl mb-2">{{ .Title }}</div>
+                            <span class="absolute right-2 top-2 font-bold">{{ .Date | time.Format ":date_medium" }}</span>
+                            {{ .Summary }}
+                        </div>
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
 {{ end }}

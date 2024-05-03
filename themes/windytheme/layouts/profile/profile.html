@@ -12,7 +12,7 @@
 <html>
     {{- partial "head.html" . -}}
     <body id="profile" class="overflow-x-hidden w-screen h-screen backdrop-blur-md bg-[url('/img/profile/background.webp')] bg-cover bg-no-repeat">
-        <div class="w-screen h-screen">
+        <div class="w-screen h-screen ">
             <div id="profile-picture" class="h-5/6 w-full flex">
                 <div class="m-auto h-fit w-fit duration-200 hover:scale-110">
                     <img src="/img/profile/profile-round.webp" alt="" class="m-auto  h-52 w-52 border-zinc-700 border-4 bg-zinc-700 drop-shadow-lg rounded-full">
@@ -43,7 +43,7 @@
             <div class="w-full h-full backdrop-blur-[3px]">
                 <div id="gradient-top" class="h-16 w-full bg-gradient-to-b from-slate-800"></div>
                 <div class="rounded-lg m-3 p-4 bg-zinc-800 border-2 border-zinc-700">
-                    <div id="content" class="prose prose-invert ml-16">
+                    <div id="content" class="prose prose-invert max-w-none">
                         {{ .Content }}
                     </div>
                 </div>

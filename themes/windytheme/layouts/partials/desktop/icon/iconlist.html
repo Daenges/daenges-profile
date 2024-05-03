@@ -1,5 +1,5 @@
 <div id="iconlist" class="grid grid-rows-5 grid-flow-col gap-4 mb-11 p-2">
-    {{ range .Site.RegularPages }}
+    {{ range .Site.Sections }}
         {{ $splitResult := split .RelPermalink "/" }}
         {{ $baseName := index $splitResult 1 }}
         {{ partial "desktop/icon/desktopicon.html" ( dict "context" . "baseName" $baseName) }}
