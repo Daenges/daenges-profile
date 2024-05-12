@@ -1,5 +1,7 @@
 {{ define "main" }}
 <div class="overflow-x-hidden w-screen h-screen backdrop-blur-md bg-[url('/img/profile/background.webp')] bg-cover bg-no-repeat">
+    {{ partial "backarrow.html" . }}
+    
     <div class="w-full min-h-full bg-cover pt-16 pb-16 bg-slate-800/55">
         <div class="w-3/4 p-8 m-auto bg-zinc-800/85 flex-col rounded-lg border-zinc-700 border-2 backdrop-blur-md">
             {{ partial "single/metadata.html" . }}

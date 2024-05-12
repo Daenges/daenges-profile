@@ -1,8 +1,7 @@
 {{ $js := resources.Get .path }}
 
-{{ if .context.Site.IsServer }}
-    <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
-{{ else }}
-    {{ $js := $js | resources.Minify | resources.Fingerprint }}
-    <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
+{{ if not .context.Site.IsServer }}
+    {{ $js = $js | resources.Minify | resources.Fingerprint }}
 {{ end }}
+
+<script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
