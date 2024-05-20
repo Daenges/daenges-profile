@@ -2,3 +2,7 @@ baseURL = 'http://daeng.es/'
 languageCode = 'en-us'
 title = 'DaengOS'
 theme = "windytheme"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
