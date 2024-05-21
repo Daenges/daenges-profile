@@ -5,7 +5,11 @@
     </head>
     <body>
         <div id="content">
-            {{- block "main" . }}{{- end }}
+            <div class="w-screen h-screen overflow-x-hidden bg-[url('/img/profile/background.webp')] bg-cover bg-no-repeat">
+                <div class="w-full min-h-full bg-cover pt-16 pb-16 bg-slate-800/55 flex">
+                    {{- block "main" . }}{{- end }}
+                </div>
+            </div>
         </div>
     </body>
 </html>

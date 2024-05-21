@@ -1,0 +1,5 @@
+<span>
+    {{ range .tags }}
+        <a href="/tags/{{ . }}/" class="hover:underline">#{{ . }}&nbsp;</a>
+    {{ end }}
+</span>

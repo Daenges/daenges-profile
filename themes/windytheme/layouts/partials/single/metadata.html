@@ -1,7 +1,7 @@
 {{ $metaData := slice
 (dict "path" "single/path-author.html" "content" .Params.author)
 (dict "path" "single/path-date.html" "content" (.Date | time.Format ":date_medium"))
-(dict "path" "single/path-tags.html" "content" .Params.tags)
+(dict "path" "single/path-tags.html" "content" (partial "partialtoinline.html" (dict "path" "single/taglistgenerator.html" "args" ( dict "tags" .Params.tags))))
 (dict "path" "single/path-wordcount.html" "content" (printf "%v Words | %v Minutes" .WordCount .ReadingTime)) }}
 
 <div id="metadata" class="text-gray-500 font-bold">

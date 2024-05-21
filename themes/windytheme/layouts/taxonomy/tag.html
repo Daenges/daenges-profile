@@ -1,0 +1,7 @@
+{{ define "main" }}
+    {{ $pathSlice := split .RelPermalink "/" }}
+    {{ $tag := index $pathSlice 2 }}
+    {{ $articlesToList := where .Site.RegularPages "Params.tags" "intersect" (slice $tag) }}
+    {{ partial "backarrow.html" . }}
+    {{ partial "lists/articlelist.html" (dict "articlesToList" $articlesToList) }}
+{{ end }}
