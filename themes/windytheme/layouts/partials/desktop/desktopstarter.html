@@ -1,5 +1,5 @@
 {{/*  Opens the greeting Window and starts the clock  */}}
-{{ $windowHtml := partial "partialtoinline.html" (dict "context" . "path" "desktop/window/windowtemplate.html" "args" (dict "title" "Help" "src" "help")) }}
+{{ $windowHtml := partial "desktop/window/windowtemplate.html" (dict "title" "Help" "src" "help") }}
 <script>
     document.addEventListener("readystatechange", () => {
         if(document.readyState == "complete") {
