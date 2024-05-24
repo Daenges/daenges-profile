@@ -1,0 +1,5 @@
+<div class="grid grid-flow-col h-full">
+    {{ range .linkDict }}
+        {{ partial "profile/sociallink.html" (dict "link" .link "img" .img) }}
+    {{ end }}
+</div>
