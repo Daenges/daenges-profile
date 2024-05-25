@@ -1,5 +1,6 @@
 {{ define "main" }}
-    <div id="caption" class="mt-4 w-full text-center text-4xl font-bold text-white absolute">{{ .Section | strings.FirstUpper  }}</div>
+    <div id="caption" class="mt-4 w-full text-center text-4xl font-bold text-white z-0 absolute">{{ .Section | strings.FirstUpper  }}</div>
+    {{ partial "rsswaves.html" . }}
     {{ $articlesToList := where .Site.RegularPages "Type" .Section }}
     {{ partial "lists/articlelist.html" (dict "articlesToList" $articlesToList) }}
 {{ end }}
