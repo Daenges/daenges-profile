@@ -32,6 +32,11 @@ function addContentToScreen(content, id, path) {
             windowList.forEach(windowID => {
                 makeElementDraggable(document.getElementById(windowID));
             });
+        } else {
+            var windowhtml = document.getElementById(fullId);
+            if(currentZlvl-1 != windowhtml.style.zIndex) {
+                windowhtml.style.zIndex = currentZlvl++;
+            }
         }
     }
 }
