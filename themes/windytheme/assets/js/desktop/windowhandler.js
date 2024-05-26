@@ -44,7 +44,7 @@ function addContentToScreen(content, id, path) {
 function makeElementDraggable(elmnt) {
     var dragPosStart = { X: 0, Y: 0 };
 
-    document.getElementById(elmnt.id + "-header").addEventListener("mousedown", dragMouseDown);
+    document.getElementById(elmnt.id).addEventListener("mousedown", dragMouseDown);
     elmnt.addEventListener("mousedown", raiseElement)
     elmnt.style.zIndex = currentZlvl++;
 
