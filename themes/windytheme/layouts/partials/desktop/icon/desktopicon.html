@@ -1,6 +1,6 @@
 {{ $windowTitle := .baseName | strings.FirstUpper }}
 {{ $basePath := printf "/%s/" .baseName }}
-{{ $windowHtml := partial "desktop/window/windowtemplate.html" (dict "title" $windowTitle "src" $basePath)  }}
+{{ $windowHtml := partial "desktop/window/windowtemplate.html" (dict "title" $windowTitle "src" $basePath "windowContent" (partial "desktop/window/iframe.html" (dict "src" $basePath)))  }}
 <div onclick="addContentToScreen({{ $windowHtml }}, {{ $windowTitle }}, {{ $basePath }})"
 class="text-center w-fit select-all cursor-pointer lg:mb-2 md:mb-4">
     <img class="lg:h-16 lg:w-16 md:h-32 md:w-32 m-auto" src="{{ .baseName }}/desk_icon.webp" alt="AltText">
