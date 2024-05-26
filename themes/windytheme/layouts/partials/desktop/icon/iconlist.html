@@ -1,4 +1,4 @@
-<div id="iconlist" class="grid grid-rows-5 grid-flow-col gap-4 mb-11 p-2">
+<div id="iconlist" class="grid grid-flow-row w-fit gap-4 mb-11 p-2">
     {{ range .Site.Sections }}
         {{ $splitResult := split .RelPermalink "/" }}
         {{ $baseName := index $splitResult 1 }}

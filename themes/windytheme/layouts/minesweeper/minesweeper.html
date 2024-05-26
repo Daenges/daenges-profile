@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        {{- partial "head.html" . -}}
+        {{- partial "jsassetinclude.html" (dict "context" . "path" "js/minesweeper/minesweeper.js")}}
+    </head>
+    <body class="w-screen h-screen bg-gray-400 p-4">
+        {{ partial "minesweeper/headbar.html" . }}
+        {{ partial "minesweeper/gameboard.html" . }}
+        {{ partial "minesweeper/resetbutton.html" . }}
+        {{ partial "minesweeper/endscreen.html" . }}
+        <script>
+            document.addEventListener("readystatechange", () => {
+                if(document.readyState == "complete") {
+                    initGame()
+                }
+            });
+        </script>
+    </body>
+</html>

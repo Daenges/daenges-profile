@@ -1,4 +1,4 @@
-{{ $js := resources.Get .path }}
+{{ $js := resources.Get .path | resources.ExecuteAsTemplate .path . }}
 
 {{ if not .context.Site.IsServer }}
     {{ $js = $js | resources.Minify | resources.Fingerprint }}
