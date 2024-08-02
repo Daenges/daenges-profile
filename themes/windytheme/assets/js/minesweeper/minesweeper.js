@@ -110,7 +110,7 @@ class Cell {
                     flagCounter++;
                     this.isFlagged = false;
                 }
-                else if(!gameLost) {
+                else if(!gameLost && !this.isRevealed) {
                     this.elem.innerHTML = flaggedCellHtml;
                     flagCounter--;
                     this.isFlagged = true;
