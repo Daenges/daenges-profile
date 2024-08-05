@@ -1,6 +1,6 @@
 {{ $filePath := "css/styles.css" }}
-{{ if .Site.IsServer}}
-    {{ $time := now }}
+{{ if hugo.IsServer}}
+    {{ $time := now | strings.Replace ":" "-" | strings.Replace " " "_" | strings.Replace "+" "" }}
     {{ $filePath = printf "css/styles-%s.css" $time }}
 {{ end }}
 {{ $styles := resources.Get "css/styles.scss"
@@ -8,7 +8,7 @@
     | postCSS (dict "config" "./assets/css/postcss.config.js")
     | resources.ExecuteAsTemplate $filePath . 
 }}
-{{ if not .Site.IsServer }}
+{{ if not hugo.IsServer }}
     {{ $styles = $styles | minify | fingerprint | resources.PostCSS }}
 {{ end }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
