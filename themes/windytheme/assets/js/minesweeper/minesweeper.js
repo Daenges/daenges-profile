@@ -22,8 +22,8 @@ const emoji = {
     COOL: "😎",
     OMOUTH: "😮"
 }
-const hiddenCellHtml = `{{ partial "minesweeper/cells/hiddencell.html" . }}`;
-const flaggedCellHtml = `{{ partial "minesweeper/cells/hiddencell.html" (dict "text" "🚩") }}`;
+const hiddenCellHtml = `{{- partial "minesweeper/cells/hiddencell.html" . -}}`;
+const flaggedCellHtml = `{{- partial "minesweeper/cells/hiddencell.html" (dict "text" "🚩") -}}`;
 
 class Cell {
     constructor (x, y, elem) {
@@ -41,7 +41,6 @@ class Cell {
     reveal() {
         if(!this.isRevealed)
         {
-            this.isRevealed = true
             this.elem.click();
         }
     }
@@ -73,8 +72,9 @@ class Cell {
                     gameboard.forEach(row => {row.forEach(cell =>{ cell.reveal(); })})
                     resetButtonHtml.style.display = "block";
                 }
-                else {
+                else if(!this.isRevealed) {
 
+                    // start timer on first click
                     if(revealedCounter === 0 && !gameLost) {
                         emojiDisplayHtml.textContent = emoji.OMOUTH;
                         startTimer()
@@ -96,13 +96,14 @@ class Cell {
                 }
 
                 // Player revealed all cells without a mine
-                if(revealedCounter === fieldEdgeSize**2 - mineCount && !gameLost) {
+                if((revealedCounter === (fieldEdgeSize**2 - mineCount)) && !gameLost) {
                     emoji.textContent = emoji.COOL;
                     resetButtonHtml.style.display = "block";
                     toggleEndscreen();
                 }
             }
         );
+        // Toggle flag and counter on right click
         this.elem.addEventListener("contextmenu", (e) => { 
                 e.preventDefault();
                 if (this.isFlagged) {
@@ -188,6 +189,7 @@ function toggleEndscreen() {
     endscreen = !endscreen;
 }
 
+// Game Startup
 function initGame() {
     gameboard = [];
     gameboardHtml.innerHTML = ""
@@ -217,7 +219,7 @@ function initGame() {
     // Select a certain percentage of the fields and place a bomb there
     for(let i = 0; i < mineCount; i++) {
         let x, y = 0;
-        do {x = randInt(0, fieldEdgeSize-1); y = randInt(0, fieldEdgeSize-1);} while(gameboard[y][x].isMine);
+        do {x = randInt(0, fieldEdgeSize); y = randInt(0, fieldEdgeSize);} while(gameboard[y][x].isMine);
         
         gameboard[y][x].setMine();
     }
