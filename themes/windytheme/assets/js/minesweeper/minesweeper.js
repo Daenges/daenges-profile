@@ -80,7 +80,7 @@ class Cell {
                     else {
 
                         // start timer on first click
-                        if(revealedCounter === 0 && !gameLost) {
+                        if(revealedCounter === 1 && !gameLost) {
                             emojiDisplayHtml.textContent = emoji.OMOUTH;
                             startTimer()
                         }
