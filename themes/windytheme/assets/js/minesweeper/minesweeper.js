@@ -59,41 +59,45 @@ class Cell {
                 if (this.isFlagged)
                     return;
                 // Reset game on clicked mine
-                else if (this.isMine) {
-                    emojiDisplayHtml.textContent = emoji.DEAD;
-                    this.elem.innerHTML = this.getRevealedHtml(-1);
-
-                    // Prevent message for clearing
-                    if(!gameLost) {
-                        gameLost = true;
-                        toggleEndscreen();
-                    }
-
-                    gameboard.forEach(row => {row.forEach(cell =>{ cell.reveal(); })})
-                    resetButtonHtml.style.display = "block";
-                }
                 else if(!this.isRevealed) {
-
-                    // start timer on first click
-                    if(revealedCounter === 0 && !gameLost) {
-                        emojiDisplayHtml.textContent = emoji.OMOUTH;
-                        startTimer()
-                    }
-
                     this.isRevealed = true;
                     revealedCounter++;
 
-                    let mines = 0;
+                    if (this.isMine) {
+                        emojiDisplayHtml.textContent = emoji.DEAD;
+                        this.elem.innerHTML = this.getRevealedHtml(-1);
+                        
 
-                    // count surrounding mines
-                    let neighbors = this.getNeighbors()
-                    neighbors.forEach(n => { if (n.isMine){mines++;} })
+                        // Prevent message for clearing
+                        if(!gameLost) {
+                            gameLost = true;
+                            toggleEndscreen();
+                        }
 
-                    this.elem.innerHTML = this.getRevealedHtml(mines);
+                        gameboard.forEach(row => {row.forEach(cell =>{ cell.reveal(); })})
+                        resetButtonHtml.style.display = "block";
+                    }
+                    else {
 
-                    // reveal more cells if there are no surrounding mines
-                    if (mines===0) {neighbors.forEach(n => {n.reveal()})}
+                        // start timer on first click
+                        if(revealedCounter === 0 && !gameLost) {
+                            emojiDisplayHtml.textContent = emoji.OMOUTH;
+                            startTimer()
+                        }
+
+                        let mines = 0;
+
+                        // count surrounding mines
+                        let neighbors = this.getNeighbors()
+                        neighbors.forEach(n => { if (n.isMine){mines++;} })
+
+                        this.elem.innerHTML = this.getRevealedHtml(mines);
+
+                        // reveal more cells if there are no surrounding mines
+                        if (mines===0) {neighbors.forEach(n => {n.reveal()})}
+                    }
                 }
+
 
                 // Player revealed all cells without a mine
                 if((revealedCounter === (fieldEdgeSize**2 - mineCount)) && !gameLost) {
