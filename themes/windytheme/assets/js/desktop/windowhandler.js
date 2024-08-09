@@ -34,6 +34,9 @@ function addContentToScreen(content, id, path) {
             });
         } else {
             var windowhtml = document.getElementById(fullId);
+            windowhtml.style.top = `${Math.max((window.innerHeight - windowhtml.offsetHeight) / 2, 0)}px`;
+            windowhtml.style.left = `${Math.max((window.innerWidth - windowhtml.offsetWidth) / 2, 0)}px`;
+
             if(currentZlvl-1 != windowhtml.style.zIndex) {
                 windowhtml.style.zIndex = currentZlvl++;
             }
@@ -54,15 +57,13 @@ function makeElementDraggable(elmnt) {
         e.preventDefault();
         raiseElement();
         
+        document.getElementById(elmnt.id + "-contentblock").style.display = "block";
         dragPosStart = { X: e.clientX, Y: e.clientY };
         document.addEventListener("mouseup", closeDragElement);
         document.addEventListener("mousemove", elementDrag);
     }
 
-    function raiseElement() {
-        if(currentZlvl-1 != elmnt.style.zIndex)
-            elmnt.style.zIndex = currentZlvl++;
-    }
+    function raiseElement() { if(currentZlvl-1 != elmnt.style.zIndex) {elmnt.style.zIndex = currentZlvl++;}}
 
     // Track the mouse position, calculate the offset and move the window relative to it
     function elementDrag(e) {
@@ -77,6 +78,7 @@ function makeElementDraggable(elmnt) {
 
     // User stopped dragging the window, remove functions
     function closeDragElement() {
+        document.getElementById(elmnt.id + "-contentblock").style.display = "none";
         document.removeEventListener("mouseup", closeDragElement);
         document.removeEventListener("mousemove", elementDrag);
     }
