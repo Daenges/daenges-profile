@@ -4,21 +4,11 @@
         {{- partial "head.html" . -}}
         {{- partial "jsassetinclude.html" (dict "context" . "path" "js/desktop/clockhandler.js") -}}
         {{- partial "jsassetinclude.html" (dict "context" . "path" "js/desktop/windowhandler.js") -}}
+        {{- partial "jsassetinclude.html" (dict "context" . "path" "js/404-page/error.js") -}}
     </head>
 
     <body id="desktop" class="bg-[#008080] w-screen h-screen overflow-hidden relative">
         {{- partial "desktop/icon/iconlist.html" . -}}
         {{- partial "desktop/taskbar/taskbar.html" . -}}
     </body>
-
-    {{ partial "desktop/desktopstarter.html" . }}
-
-    {{ $windowHtml := partial "desktop/window/windowtemplate.html" (dict "title" "Error-404" "src" "/" "windowContent" (partial "404/404.html" . ))  }}
-    <script>
-        document.addEventListener("readystatechange", () => {
-            if(document.readyState == "complete") {
-                addContentToScreen({{ $windowHtml }}, "Error-404", "/");
-            }
-        });
-    </script>
 </html>

@@ -9,12 +9,5 @@
         {{ partial "minesweeper/gameboard.html" . }}
         {{ partial "minesweeper/resetbutton.html" . }}
         {{ partial "minesweeper/endscreen.html" . }}
-        <script>
-            document.addEventListener("readystatechange", () => {
-                if(document.readyState == "complete") {
-                    initGame()
-                }
-            });
-        </script>
     </body>
 </html>

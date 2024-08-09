@@ -250,3 +250,5 @@ function resetTimer() {
     rightDisplayHtml.textContent = currentTime.toString().padStart(3, '0');
     return temp;
 }
+
+registerCallOnLoad(initGame);

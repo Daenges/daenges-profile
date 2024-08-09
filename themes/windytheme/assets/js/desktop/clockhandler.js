@@ -12,3 +12,8 @@ function updateTime() {
 
     clockDiv.innerText = `${hours}:${minutes} ${postfix}`
 }
+
+registerCallOnLoad(() => {
+    updateTime();
+    setInterval(updateTime, 1000);
+});

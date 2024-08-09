@@ -11,5 +11,8 @@
 {{ if not hugo.IsServer }}
     {{ $styles = $styles | minify | fingerprint | resources.PostCSS }}
 {{ end }}
+
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 <meta charset="UTF-8">
+
+{{- partial "jsassetinclude.html" (dict "context" . "path" "js/onReadyStarter.js") -}}
