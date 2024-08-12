@@ -1,6 +1,6 @@
 {{ $filePath := "css/styles.css" }}
 {{ if hugo.IsServer}}
-    {{ $time := now | strings.Replace ":" "-" | strings.Replace " " "_" | strings.Replace "+" "" }}
+    {{ $time := now.Format "2006-01-02-15-04-05" }}
     {{ $filePath = printf "css/styles-%s.css" $time }}
 {{ end }}
 {{ $styles := resources.Get "css/styles.scss"
