@@ -6,10 +6,10 @@
     </div>
     <div class="grid grid-flow-col gap-0 text-black font-bold w-13 h-6 absolute right-1 pr-1 justify-items-end">
         <button class="bg-[#c0c0c0] text-xs cursor-pointer w-6 h-5 my-auto active:bg-gray-600 border-2 border-t-slate-200 border-l-white border-r-black border-b-black"
-        onclick="window.open(`{{ .src }}`)"
+        onclick="window.open('{{ .src }}');"
         >&#9974;</button>
         <button class="bg-[#c0c0c0] text-xs cursor-pointer w-6 h-5 my-auto active:bg-gray-600 border-2 border-t-slate-200 border-l-white border-r-black border-b-black"
-        onclick="removeWindow(`{{ $windowId }}`)"
+        onclick="removeWindow('{{ $windowId }}');"
         >X</button>
     </div>
     <div class="relative mt-1 flex-grow border-2 border-b-slate-200 border-l-slate-400 border-r-slate-200 border-t-slate-400">
