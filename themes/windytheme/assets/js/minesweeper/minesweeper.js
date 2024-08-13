@@ -14,7 +14,7 @@ const gameboardHtml = document.getElementById("gameboard");
 const leftDisplayHtml = document.getElementById("left-display");
 const rightDisplayHtml = document.getElementById("right-display");
 const emojiDisplayHtml = document.getElementById("game-status-emoji");
-const resetButtonHtml = document.getElementById("reset-button-div");
+const hintButtonHtml = document.getElementById("hint-button-div");
 const endScreenHtml = document.getElementById("endscreen");
 const emoji = {
     HAPPY: "🙂",
@@ -39,10 +39,7 @@ class Cell {
     }
 
     reveal() {
-        if(!this.isRevealed)
-        {
-            this.elem.click();
-        }
+        this.elem.click();
     }
 
     setMine() {
@@ -75,13 +72,13 @@ class Cell {
                         }
 
                         gameboard.forEach(row => {row.forEach(cell =>{ cell.reveal(); })})
-                        resetButtonHtml.style.display = "block";
                     }
                     else {
 
                         // start timer on first click
                         if(revealedCounter === 1 && !gameLost) {
                             emojiDisplayHtml.textContent = emoji.OMOUTH;
+                            hintButtonHtml.style.display = "none";
                             startTimer()
                         }
 
@@ -101,8 +98,7 @@ class Cell {
 
                 // Player revealed all cells without a mine
                 if((revealedCounter === (fieldEdgeSize**2 - mineCount)) && !gameLost) {
-                    emoji.textContent = emoji.COOL;
-                    resetButtonHtml.style.display = "block";
+                    emojiDisplayHtml.textContent = emoji.COOL;
                     toggleEndscreen();
                 }
             }
@@ -185,6 +181,15 @@ function randInt(mn, mx) {
     return Math.floor(Math.random() * (mx - mn) + mn);
 }
 
+// select random cell that is not surrounded by mines and mark it as hint
+function giveHint() {
+    hintButtonHtml.style.display = "none";
+    currentTime = 50;
+    startTimer();
+    let emptyCells = gameboard.flat().filter(cell => cell.getNeighbors().filter(n => n.isMine).length === 0);
+    if (emptyCells.length > 0) { emptyCells[randInt(0, emptyCells.length)].elem.style.backgroundColor = 'darkgreen'; }
+}
+
 function toggleEndscreen() {
     var time = resetTimer();
     document.getElementById("endscreen-time").innerText = time;
@@ -201,11 +206,12 @@ function initGame() {
     revealedCounter = 0;
     leftDisplayHtml.textContent = flagCounter;
     rightDisplayHtml.textContent = "000"
-    emojiDisplayHtml.textContent = emoji.HAPPY
-    resetButtonHtml.style.display = "none";
+    emojiDisplayHtml.textContent = emoji.HAPPY;
     endScreenHtml.style.display = "none";
+    hintButtonHtml.style.display = "block";
     endscreen = false;
     gameLost = false;
+    resetTimer();
     timer = 0;
 
     // Fill the field list with bool values
@@ -226,6 +232,9 @@ function initGame() {
         do {x = randInt(0, fieldEdgeSize); y = randInt(0, fieldEdgeSize);} while(gameboard[y][x].isMine);
         
         gameboard[y][x].setMine();
+
+        // activate cheat mode
+        //gameboard[y][x].elem.innerHTML = flaggedCellHtml;
     }
 }
 

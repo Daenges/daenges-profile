@@ -7,6 +7,12 @@ module.exports = {
       dseg: ['DSEG']
     },
     extend: {
+      width: {
+        '1/16': '6.25%'
+      },
+      height: {
+        '1/16': '6.25%'
+      },
       keyframes: {
         scrollBackgroundDown : {
           '0%' : { backgroundPosition: '0 0'},

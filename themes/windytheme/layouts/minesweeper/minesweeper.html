@@ -4,10 +4,10 @@
         {{- partial "head.html" . -}}
         {{- partial "jsassetinclude.html" (dict "context" . "path" "js/minesweeper/minesweeper.js")}}
     </head>
-    <body class="w-screen h-screen bg-gray-400 p-4">
+    <body class="w-screen h-screen bg-gray-400 p-4 overflow-x-hidden">
         {{ partial "minesweeper/headbar.html" . }}
         {{ partial "minesweeper/gameboard.html" . }}
-        {{ partial "minesweeper/resetbutton.html" . }}
+        {{ partial "minesweeper/hintbutton.html" . }}
         {{ partial "minesweeper/endscreen.html" . }}
     </body>
 </html>
