@@ -37,6 +37,7 @@ module.exports = {
   },
   variants: {},
   plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
     require('@tailwindcss/typography'),
     require('tailwind-heropatterns')({
       // as per tailwind docs you can pass variants
