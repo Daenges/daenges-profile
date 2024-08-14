@@ -24,6 +24,7 @@ const emoji = {
 }
 const hiddenCellHtml = `{{- partial "minesweeper/cells/hiddencell.html" . -}}`;
 const flaggedCellHtml = `{{- partial "minesweeper/cells/hiddencell.html" (dict "text" "🚩") -}}`;
+const crossedCellHtml = `{{- partial "minesweeper/cells/hiddencell.html" (dict "text" "❌") -}}`;
 
 class Cell {
     constructor (x, y, elem) {
@@ -53,8 +54,11 @@ class Cell {
     prepareElem() {
         this.elem.addEventListener("click", (e) => { 
                 // Prevent click on flagged
-                if (this.isFlagged)
-                    return;
+                if (this.isFlagged) {
+                    if (!this.isMine && gameLost) {
+                        this.elem.innerHTML = crossedCellHtml
+                    }
+                }
                 // Reset game on clicked mine
                 else if(!this.isRevealed) {
                     this.isRevealed = true;
